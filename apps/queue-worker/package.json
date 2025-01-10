@@ -1,0 +1,48 @@
+{
+  "name": "@repo/queue-worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc --build tsconfig.build.json && node scripts/esbuild.js",
+    "build:wrangler": "bun wrangler deploy --dry-run --outdir build",
+    "dev": "bun with-env wrangler dev --persist-to ../../.wrangler/state",
+    "clean": "git clean -xdf .cache .turbo build dist node_modules",
+    "clean:built": "git clean -xdf .cache .turbo build dist",
+    "deploy": "bun wrangler deploy --minify",
+    "typecheck": "tsc --noEmit",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.4.1",
+    "@repo/db": "*",
+    "@repo/validators": "*",
+    "hono": "^4.6.12",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241202.0",
+    "@repo/esbuild-config": "*",
+    "@repo/eslint-config": "*",
+    "@repo/prettier-config": "*",
+    "@repo/tsconfig": "*",
+    "@types/node": "^22.10.1",
+    "bun-types": "^1.1.38",
+    "dotenv": "^16.4.7",
+    "dotenv-cli": "^7.4.4",
+    "eslint": "^8.57.1",
+    "prettier": "^3.4.1",
+    "typescript": "^5.7.2",
+    "wrangler": "3.93.0"
+  },
+  "prettier": "@repo/prettier-config"
+}

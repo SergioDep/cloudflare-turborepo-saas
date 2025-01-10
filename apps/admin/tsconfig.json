@@ -1,0 +1,18 @@
+{
+  "extends": "@repo/tsconfig/base.json",
+  "compilerOptions": {
+    "lib": ["ES2022", "dom", "dom.iterable"],
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@repo/queue-worker/*": ["../queue-worker/dist/src/*"],
+      "@repo/ui/*": ["../../packages/ui/src/*"]
+    },
+    "types": ["@cloudflare/workers-types"],
+    "plugins": [{ "name": "next" }],
+    "module": "ESNext"
+  },
+  "include": [".", ".next/types/**/*.ts", "../*/src/**/types.ts"], // Couldn't figure out how to get the merged declarations from the other apps
+  "exclude": ["node_modules", "build", "dist"]
+}

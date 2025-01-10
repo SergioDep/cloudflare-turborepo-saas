@@ -1,0 +1,49 @@
+{
+  "name": "@repo/db",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc --build tsconfig.build.json && node scripts/esbuild.js",
+    "clean": "git clean -xdf .cache .turbo build dist node_modules",
+    "clean:built": "git clean -xdf .cache .turbo build dist",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:migrate:prod": "NODE_ENV=production bun with-env drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:push:prod": "NODE_ENV=production bun with-env drizzle-kit push",
+    "db:pull": "NODE_ENV=production bun with-env drizzle-kit pull",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@repo/validators": "*",
+    "dotenv": "^16.4.6",
+    "drizzle-kit": "^0.28.1",
+    "drizzle-orm": "^0.36.4",
+    "drizzle-zod": "^0.5.1",
+    "next-auth": "5.0.0-beta.25",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@repo/esbuild-config": "*",
+    "@repo/eslint-config": "*",
+    "@repo/prettier-config": "*",
+    "@repo/tsconfig": "*",
+    "@types/node": "^22.10.1",
+    "dotenv-cli": "^7.4.4",
+    "eslint": "^8.57.1",
+    "prettier": "^3.4.1",
+    "typescript": "^5.7.2",
+    "wrangler": "3.93.0"
+  },
+  "prettier": "@repo/prettier-config"
+}

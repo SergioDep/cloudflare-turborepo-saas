@@ -1,0 +1,44 @@
+{
+  "name": "cloudflare-turborepo-saas",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "pages:build:admin": "turbo -F @repo/admin run pages:build",
+    "clean": "git clean -xdf node_modules",
+    "clean:workspaces": "turbo run clean",
+    "clean:built": "turbo run clean:built",
+    "db:generate": "turbo -F @repo/db db:generate",
+    "db:migrate": "turbo -F @repo/db db:migrate",
+    "db:migrate:prod": "turbo -F @repo/db db:migrate:prod",
+    "db:push": "turbo -F @repo/db db:push",
+    "db:push:prod": "turbo -F @repo/db db:push",
+    "dev": "turbo watch dev --continue",
+    "dev:admin": "turbo watch dev -F @repo/admin --continue",
+    "dev:worker": "turbo watch dev -F @repo/queue-worker --continue",
+    "format": "turbo run format --continue -- --cache --cache-location .cache/.prettiercache",
+    "format:fix": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",
+    "lint": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
+    "lint:fix": "turbo run lint --continue -- --fix --cache --cache-location .cache/.eslintcache",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "@repo/prettier-config": "*",
+    "@turbo/gen": "^2.3.3",
+    "prettier": "^3.4.0",
+    "turbo": "^2.3.3",
+    "typescript": "5.5.4"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "bun@1.1.12",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "tooling/*"
+  ],
+  "prettier": "@repo/prettier-config",
+  "dependencies": {
+    "next": "^14"
+  }
+}

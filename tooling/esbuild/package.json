@@ -1,0 +1,30 @@
+{
+  "name": "@repo/esbuild-config",
+  "version": "0.1.0",
+  "exports": {
+    "./*": "./*.js"
+  },
+  "private": true,
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo node_modules",
+    "clean:built": "git clean -xdf .cache .turbo",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "typecheck": "tsc --noEmit"
+  },
+  "type": "module",
+  "dependencies": {
+    "esbuild": "^0.24.0",
+    "fast-glob": "^3.3.2",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/prettier-config": "*",
+    "@repo/tsconfig": "*",
+    "@types/node": "^22.10.1",
+    "eslint": "^8.57.1",
+    "prettier": "^3.4.1",
+    "typescript": "^5.7.2"
+  },
+  "prettier": "@repo/prettier-config"
+}

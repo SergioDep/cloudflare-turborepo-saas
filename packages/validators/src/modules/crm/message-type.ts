@@ -1,0 +1,25 @@
+import { z } from "zod";
+
+export const MessageTypeSchema = z.enum([
+  "text",
+  "interactive",
+  "image",
+  "video",
+  "audio",
+  "voice",
+  "document",
+  "location",
+  "sticker",
+  "reaction",
+  "contacts",
+  "multi_contacts",
+  "list",
+  "list_response",
+  "buttons",
+  "buttons_response",
+  "template",
+  "template_button_reply",
+  "poll_creation",
+  "poll_response",
+  "unknown",
+]);

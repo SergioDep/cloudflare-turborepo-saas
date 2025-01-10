@@ -1,0 +1,30 @@
+{
+  "folders": [
+    {
+      "path": ".",
+    },
+  ],
+  "settings": {
+    "tailwindCSS.experimental.classRegex": [
+      ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+      ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+      [
+        "(?:[\\w$_]*)(?:[Cc]lass[Nn]ame[s]?)\\s*(?:=|\\+=)\\s*['\"]([^'\"]*)['\"]",
+      ],
+    ],
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "typescript.preferences.includePackageJsonAutoImports": "on",
+    "typescript.preferences.importModuleSpecifierEnding": "minimal",
+    "workbench.list.horizontalScrolling": true,
+  },
+  "extensions": {
+    "recommendations": [
+      "dsznajder.es7-react-js-snippets",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "yoavbls.pretty-ts-errors",
+      "bradlc.vscode-tailwindcss",
+      "tamasfe.even-better-toml",
+    ],
+  },
+}

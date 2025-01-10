@@ -1,0 +1,12 @@
+{
+  "extends": "@repo/tsconfig/internal-package.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@repo/db/*": ["./src/*"]
+    },
+    "composite": true
+  },
+  "include": ["."],
+  "exclude": ["node_modules", "build", "dist"]
+}

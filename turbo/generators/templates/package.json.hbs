@@ -1,0 +1,29 @@
+{
+  "name": "@repo/{{ name }}",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo build dist node_modules",
+    "clean:built": "git clean -xdf .cache .turbo build dist",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "devDependencies": {
+    "@repo/esbuild-config": "*",
+    "@repo/eslint-config": "*",
+    "@repo/prettier-config": "*",
+    "@repo/tsconfig": "*",
+    "@types/node": "^22.10.1",
+    "bun-types": "^1.1.38",
+    "eslint": "^8.57.1",
+    "prettier": "^3.4.1",
+    "typescript": "^5.7.2"
+  },
+  "prettier": "@repo/prettier-config"
+}
